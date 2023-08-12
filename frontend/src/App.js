@@ -1,26 +1,48 @@
 import './index.css';
+import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Navbar from './Components/Navbar';
 import {BrowserRouter as Router, Route,Routes} from "react-router-dom";
-import Footer from './Components/Footers';
-import Signin from './Components/Signin';
-import Register from './Components/Register';
-import Aboutus from './Components/Aboutus';
+import Layout from './pages/layout';
+import Home from './pages/home';
+import Manage from './pages/manage';
+import About from './pages/about';
+import Contact from './pages/contact';
+import Signin from './pages/signin';
 function App() {
-  return (
-  <>
- 
-   <Router>
-   <Navbar />
-    <Routes>
-    <Route path="/" element={< Footer/>} />
-      <Route path="/signin" element={<Register/>} />
-      {/* <Route path='/edit' element={<EditExercise/>} /> */}
-      </Routes>
+return (
+<>
+<Router>
+<Routes>
+<Route path="/" element={<Layout>
+<Home />
+</Layout>} />
 
-      </Router>
-  </>
-  );
+
+<Route path="/about" element={<Layout>
+<About />
+</Layout>} />
+
+
+<Route path="/contact" element={<Layout>
+<Contact />
+</Layout>} />
+
+
+<Route path="/manage" element={
+<Layout>
+<Manage />
+</Layout>} />
+
+
+<Route path="/signin" element={
+<Layout><Signin/></Layout>
+}/>
+{/* <Route path='/edit' element={<EditExercise/>} /> */}
+</Routes>
+</Router>
+</>
+);
 }
+
 
 export default App;

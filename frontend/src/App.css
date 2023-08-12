@@ -1,0 +1,7 @@
+.hero-section{
+    /* background-image: url("./image/background.png"); */
+    background-color: black;
+}
+.hero-image{
+    border-radius:100px 100px 0px 0px;
+}

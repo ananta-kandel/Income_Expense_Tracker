@@ -7,7 +7,7 @@ function Navbar() {
     const [open, setOpen] = useState(false);
     return (
         <>
-         <div className='md:flex justify-between  bg-indigo-500 items-center'>
+         <div className='md:flex justify-between  bg-black items-center'>
             <div>
                 <img className="w-[7rem] height-[3.5rem]" src={logo} alt="image" />
             </div>
