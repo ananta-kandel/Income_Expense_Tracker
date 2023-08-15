@@ -7,7 +7,8 @@ import Home from './pages/home';
 import Manage from './pages/manage';
 import About from './pages/about';
 import Contact from './pages/contact';
-import Signin from './pages/signin';
+import Signin from './Components/Signin';
+import Register from './Components/Register';
 function App() {
 return (
 <>
@@ -36,6 +37,10 @@ return (
 
 <Route path="/signin" element={
 <Layout><Signin/></Layout>
+}/>
+
+<Route path="/register" element={
+<Layout><Register/></Layout>
 }/>
 {/* <Route path='/edit' element={<EditExercise/>} /> */}
 </Routes>

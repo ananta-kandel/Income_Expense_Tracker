@@ -1,7 +1,27 @@
 const userModel = require("../models/UserModel");
 const bcrypt = require('bcryptjs');
-const userLoginController = (req,res) =>{
-   res.send("hello")
+const userLoginController = async(req,res) =>{
+   try{
+      const {name , password} = req.body;
+      let userFound = await userModel.findOne({name:name});
+       let foundpassword = await bcrypt.compareSync(password ,userFound.password); // true
+
+       if( !userFound || !foundpassword) {
+        res.json({  
+          mes : "invalid username"
+        })
+      }
+      else{
+        res.json({
+          msg:"login sucessfull"
+        })
+      }
+   }
+   catch(e){
+    res.status(400).json({
+      msg:"login unsucessfull",
+    })
+   }
 }
 
 var salt = bcrypt.genSaltSync(10);
@@ -24,7 +44,7 @@ const registerController = async (req, res) => {
         newUser,
       });
     } catch (error) {
-      res.status(400).send("Email already use").json({
+      res.status(400).json({
         success: false,
         error,
       });
@@ -33,5 +53,7 @@ const registerController = async (req, res) => {
 const getregisterController =(req,res)=>{
     res.send("register user")
 }
+
+
   
 module.exports = {userLoginController, registerController,getregisterController} 
